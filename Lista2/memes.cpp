@@ -7,6 +7,7 @@ using namespace std;
 struct paises{
 	string name;
 	int qnt;
+	int pos;
 };
 
 bool cmp(paises i, paises j){
@@ -24,6 +25,7 @@ while(cin>>n, n!=0){
 		paises nome;		
 		cin>>nome.name;
 		//cout<<"LEU O NOME"<<endl;
+		nome.pos=1;
 		vector<int>memes;
 		for(int i=0; i<12; i++){
 			int num;
@@ -42,9 +44,17 @@ while(cin>>n, n!=0){
 		vet.push_back(nome);
 	}
 	sort(vet.begin(), vet.end(), cmp);
+
+	for(int i=1; i<n; i++){
+		if(vet[i].qnt==vet[i-1].qnt)
+			vet[i].pos=vet[i-1].pos;
+		else
+			vet[i].pos=i+1;
+	}
+
 	cout<<"Teste "<<teste<<endl;
 	for(int i=0; i<n; i++){
-		cout<<i+1<<" "<<vet[i].qnt<<" "<<vet[i].name<<endl;
+		cout<<vet[i].pos<<" "<<vet[i].qnt<<" "<<vet[i].name<<endl;
 	}
 	cout<<endl;
 }
