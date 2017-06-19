@@ -17,7 +17,6 @@ int main(){
 		queue <char> num;
 		for(int i=0; i<numero.size(); i++)
 			num.push(numero[i]);
-		//num.push('x');
 
 		int bira;
 		cin>>bira;
@@ -32,7 +31,7 @@ int main(){
 
 			while(!num.empty()){
 
-				while(anterior==num.front()){
+				while(!num.empty() && anterior==num.front()){
 					qnt++;
 					num.pop();
 				}
