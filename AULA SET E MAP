@@ -1,0 +1,73 @@
+//--------------------SET--------------------
+
+#include <set>	//É UM VECTOR ORDENADO
+		//NÃO REPETE ELEMENTOS IGUAIS
+
+int main(){
+	set<int>s;
+	int n;
+	for(int i=0; i<5; i++){
+		cin>>n;
+		s.insert(n);		//ADICIONA UM ELEMENTO NO SET
+	}
+
+	set<int>::iterator it;		//USA ITERATOR PARA PERCORRER A ESTRUTURA (COM PONTEIROS)
+	for(it = s.begin(); it != s.end(); it++)
+		cout<<*it<<endl;
+
+	it=s.find(10);			//REPORTA A POSIÇÃO DE UM DETERMINADO ELEMENTO SE ELE EXISTIR
+	if(it!=s.end())			//SE NAO ENCONTRAR O ELEMENTO, ELE RETORNA O S.END()
+
+
+	s.erase(8);			//REMOVE UM ELEMENTO
+	
+
+	if(s.count(8))			//RETORNA A QUANTIDADE (1 SE O ELEMENTO EXISTIR NA ESTRUTURA E 0 SE NAO EXISTIR)
+		s.clear;		//APAGA TODA A ESTRUTURA
+
+		s.size();		//RETORNA QUANTAS CHAVES EXISTEM NO SET
+}
+
+
+
+
+
+//--------------------MAP--------------------
+
+#include <map>		//É UM VECTOR QUE ASSOCIA UMA CHAVE E UM VALOR
+			//É ORDENADO PELO PRIMEIRO CAMPO?
+
+int main(){
+	map<string, int> m;	//PRIMEIRA VARIAVEL É A CHAVE E A SEGUNDA É O VALOR
+	int n; string nome;
+
+	for(int i=0; i<3; i++){		//É UMA ESTRUTURA QUE COLOCA
+		cin>>nome>>n;
+		m[nome]=n;		//SE A CHAVE NAO EXISTE, ELE CRIA...
+					//SE A CHAVE ELE JA EXISTE, NAO FAZ NADA
+	}
+
+	/* 	<ola, 5>
+		<oi,  3>
+		<alo, 7>	
+		m[alo"]++;	*/	//ELE SETA AS POSICOES NOVAS COMO 0 (CASO VC USE SEM ELA ANTES DE DAR UM VALOR PARA ELA
+
+	
+	map<string, int>::iterator it;
+	for(it=m.begin(); it != m.end(); it++)		//PARA PONTEIROS:
+		cout<<(*it).first<<(*it).second<<endl;	//ITERATOR.FIRST PARA PRIMEIRO CAMPO (STRING)
+							//ITERATOR.SECOND PARA SEGUNDO CAMPO (INT)
+
+	it=m.find("ola");		//SE ENCONTRAR A CHAVE, RETORNA SUA POSICAO, SE NAO RETORNA M.END()
+	if(it != m.end())
+		m.erase(it);		//REMOVE A CHAVE IT E SEU CONTEUDO DO PONTEIRO
+
+
+	if(m.count("alo")!=m.end())	//COUNT RETORNA A QUANTIDADE (0 OU 1) DA CHAVE NA ESTRUTURA
+		m.clear();		//APAGA TODA A ESTRUTURA
+	
+
+	m.size();		//RETORNA QUANTAS CHAVES EXISTEM NO MAP
+}
+
+
