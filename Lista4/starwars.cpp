@@ -18,33 +18,46 @@ for(int cont=0; cont<t; cont++){
 		string tatoo,ptbr;
 		cin>>tatoo;
 		cin.ignore();
-		getline(ptbr);
-		map[tatoo]=ptbr;
+		getline(cin, ptbr);
+		lingua[tatoo]=ptbr;
 	}
 
 	for(int i=0; i<l; i++){
-		bool ward=true;
-		string linha,palavra;
-		getline(linha);
+		bool ward=false;
+		string linha,palavra="";
+		getline(cin, linha);
 		for(int j=0; j<linha.size(); j++){
 			if(linha[j]=='\n' || linha[j]==' '){
 
 				if(lingua.find(palavra)==lingua.end()){
 					if(ward){
 						cout<<" ";
-						ward=false;
 					}
 					cout<<palavra;
-					
-				else
+					ward=true;
+				}
+				else{
+					if(ward){
+						cout<<" ";
+					}
 					cout<<lingua[palavra];
-
-				palavra="";
+					ward=true;
+				}
+				palavra.clear();
 			}
 			else
 				palavra+=linha[j];
 		}
-			
+		if(ward){
+			cout<<" ";
+		}
+		if(lingua.find(palavra)==lingua.end())
+			cout<<palavra<<endl;
 		
-	
-	
+		else
+			cout<<lingua[palavra]<<endl;
+		
+	}
+}
+}	
+
